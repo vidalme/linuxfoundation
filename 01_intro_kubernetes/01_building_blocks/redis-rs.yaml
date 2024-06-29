@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: redis-rs
+  labels:
+    app: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      name: redis-pod
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: redis-pod
+        image: "redis:latest"
