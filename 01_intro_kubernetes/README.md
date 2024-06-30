@@ -1,0 +1,1 @@
+# notes estudando o curso "introduction to kubernetes" da LinuxFoundation

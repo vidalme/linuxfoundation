@@ -1,6 +1,7 @@
 # Services
 
 In this chapter, we will learn about Service objects used to abstract the communication between cluster internal microservices, or with the external world. A Service offers a single DNS entry for a stateless containerized application managed by the Kubernetes cluster, regardless of the number of its replicas, by providing a common load balancing access point to a set of pods logically grouped and managed by a controller such as a Deployment, ReplicaSet, or DaemonSet. 
+
 ```yaml
 apiVersion: v1
 kind: Service

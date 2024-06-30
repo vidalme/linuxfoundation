@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: green-app
+  labels:
+    app: green-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: green-app
+  strategy: {}      
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: green-app
+        type: canary
+    spec:
+      volumes:
+      - name: meu-volume
+        hostPath: 
+          path: /home/andre/data
+          # type: Directory
+
+      containers:
+      - image: nginx
+        name: nginx
+        ports: 
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: meu-volume
+          # readOnly: true
+      - image: debian 
+        name: debian
+        volumeMounts:
+        - mountPath: /host-vol
+          name: meu-volume
+        command: ["/bin/sh","-c", "echo Bem vindo a applicação verde > /host-vol/index.html ; sleep infinity" ]
+status: {}
