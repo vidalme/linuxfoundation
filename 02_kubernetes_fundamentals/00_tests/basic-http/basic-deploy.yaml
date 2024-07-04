@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basic-deploy
+  labels:
+    app: basic-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: basic-deploy
+  template:
+    metadata:
+      labels:
+        app: basic-deploy
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: basic-deploy-service
+  labels:
+    app: basic-deploy
+spec:
+  type: LoadBalancer
+  selector:
+    app: basic-deploy
+  ports:
+    - port: 8088
+      targetPort: 80

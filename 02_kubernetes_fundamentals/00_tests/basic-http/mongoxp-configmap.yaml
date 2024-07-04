@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongoxp-configmap
+  namespace: default
+data: 
+  db: mongodb-service
